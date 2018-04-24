@@ -43,6 +43,7 @@ gulp.task('watch', function() {
     gulp.watch(paths.scripts, ['scripts']);
     gulp.watch(paths.styles, ['styles']);
     gulp.watch(paths.html, ['html']);
+    console.log("WATCH RUNNING: Now Watching HTML, CSS & JavaScript Files");
 });
 
 gulp.task('default', ['scripts', 'styles', 'html', 'watch']);
