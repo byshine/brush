@@ -1,4 +1,5 @@
 # boilerplate
+Boilerplate intended for server-less applications, but can be used for applications with servers.
 
 Usage:
 
