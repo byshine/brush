@@ -11,4 +11,6 @@ To Build
  
  For development
  
- 1. `npm run develop`
+ 1. `git clone https://github.com/byshine/boilerplate.git`
+ 2. `npm install`
+ 3. `npm run develop`
