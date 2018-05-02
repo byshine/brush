@@ -5,6 +5,8 @@ const cleanCSS = require('gulp-clean-css');
 const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 const htmlmin = require('gulp-htmlmin');
+const babel = require('gulp-babel');
+const nodemon = require('gulp-nodemon');
 
 const paths = {
     scripts: ["src/js/*.js"],
@@ -23,6 +25,9 @@ gulp.task('html', () => {
 gulp.task('scripts', () => {
     return gulp.src(paths.scripts)
         .pipe(sourcemaps.init())
+        .pipe(babel({
+            presets: ['env']
+        }))
         .pipe(concat("main.js"))
         .pipe(uglify())
         .pipe(sourcemaps.write())
@@ -43,7 +48,13 @@ gulp.task('watch', function() {
     gulp.watch(paths.scripts, ['scripts']);
     gulp.watch(paths.styles, ['styles']);
     gulp.watch(paths.html, ['html']);
-    console.log("WATCH RUNNING: Now Watching HTML, CSS & JavaScript Files");
+    nodemon({
+        script: 'app.js',
+        ext: 'js',
+        env: { 'NODE_ENV': 'development' }
+    });
+    console.log("WATCH RUNNING: Now Watching HTML, CSS & JavaScript & NodeJS Files");
 });
 
-gulp.task('default', ['scripts', 'styles', 'html', 'watch']);
+gulp.task('default', ['scripts', 'styles', 'html']);
+gulp.task('develop', ['watch']);
