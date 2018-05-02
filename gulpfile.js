@@ -7,6 +7,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const htmlmin = require('gulp-htmlmin');
 const babel = require('gulp-babel');
 const nodemon = require('gulp-nodemon');
+const plumber = require('gulp-plumber');
 
 const paths = {
     scripts: ["src/js/*.js"],
@@ -16,6 +17,7 @@ const paths = {
 
 gulp.task('html', () => {
     return gulp.src(paths.html)
+        .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(htmlmin())
         .pipe(sourcemaps.write())
@@ -24,6 +26,7 @@ gulp.task('html', () => {
 
 gulp.task('scripts', () => {
     return gulp.src(paths.scripts)
+        .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(babel({
             presets: ['env']
@@ -36,6 +39,7 @@ gulp.task('scripts', () => {
 
 gulp.task('styles', () => {
     return gulp.src(paths.styles)
+        .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(concat("styles.css"))
         .pipe(autoprefixer())
@@ -45,15 +49,16 @@ gulp.task('styles', () => {
 });
 
 gulp.task('watch', function() {
-    gulp.watch(paths.scripts, ['scripts']);
-    gulp.watch(paths.styles, ['styles']);
-    gulp.watch(paths.html, ['html']);
-    nodemon({
-        script: 'app.js',
-        ext: 'js',
-        env: { 'NODE_ENV': 'development' }
-    });
-    console.log("WATCH RUNNING: Now Watching HTML, CSS & JavaScript & NodeJS Files");
+
+        gulp.watch(paths.scripts, ['scripts']);
+        gulp.watch(paths.styles, ['styles']);
+        gulp.watch(paths.html, ['html']);
+        nodemon({
+            script: 'app.js',
+            ext: 'js',
+            env: { 'NODE_ENV': 'development' }
+        });
+
 });
 
 gulp.task('default', ['scripts', 'styles', 'html']);
