@@ -1,3 +1,11 @@
+html 
+    --color-blue: rgb(0,75,129)
+    --color-red: rgb(254,68,80)
+    --color-lightblue: rgb(67,98,197)
+    --color-green: rgb(73,173,65)
+    --color-yellow: rgb(209,196,45)
+    --color-black: rgb(70,70,70)
+    
 html  
     box-sizing: border-box
 
@@ -11,10 +19,324 @@ html, body, h1, h2, h3, h4, h5, ul, li, p
 ul 
     list-style-type: none
 
-#main-section
-    width: 100%
-    height: 100vh
+body
+    font-family: 'Poppins', sans-serif
+
+.bright
+    color: rgba(255,255,255,1)
+
+.percentUp 
+    color: green
+
+.percentDown
+    color: red
+
+.orderStatusShipped
+    background-color: var(--color-green)
+    color: white
+    font-size: 0.8em
+    padding: 0.5em
+
+.orderStatusDelivered
+    background-color: var(--color-lightblue)
+    color: white
+    font-size: 0.8em
+    padding: 0.5em
+
+.orderStatusPending
+    background-color: var(--color-yellow)
+    color: white
+    font-size: 0.8em
+    padding: 0.5em
+
+.orderStatusCancelled
+    background-color: var(--color-red)
+    color: white
+    font-size: 0.8em
+    padding: 0.5em
+
+.orderStatusBackOrder
+    background-color: var(--color-black)
+    color: white
+    font-size: 0.8em
+    padding: 0.5em
+
+.grid-columns-4
+    display: grid
+    grid-template-columns: 1fr 1fr 1fr 1fr
+    grid-template-rows: 5em
+    grid-column-gap: 1em
+
+.grid-columns-2
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-column-gap: 1em
+
+.summary-section .card
+    border: 1px solid rgba(240, 240, 240, 1)
+    border-radius: 20px
+    padding: 1em
+    border: 1px solid white
     display: flex
-    justify-content: center
-    align-items: center
-    background-color: black
+    flex-wrap: wrap
+
+
+    .card-header
+        flex: 1
+        display: flex
+        align-items: center
+
+        svg
+            color: rgba(240,240,240,0.8)
+            font-size: 2.5em
+            margin-right: 0.2em
+        & h5
+            color: rgba(240, 240, 240, 1)
+            font-size: 0.8em
+            letter-spacing: 0.05em
+            font-weight: normal
+            text-align: center
+            letter-spacing: 0
+
+    .card-body
+        flex: 1
+        display: flex
+        color: white
+        align-items: center
+        justify-content: flex-end
+        font-size: 1.5em
+
+.summary-section .card:nth-child(1) 
+    background-color: rgb(254,68,80)
+.summary-section .card:nth-child(2)
+    background-color: rgb(67,98,197)
+.summary-section .card:nth-child(3)
+    background-color: rgb(73,173,65)
+.summary-section .card:nth-child(4)
+    background-color: rgb(209,196,45)
+
+
+
+main
+    height: 100vh
+    background-image: url("../images/main-bg.jpg")
+
+.container
+    display: grid
+    grid-template-rows: 1fr 8fr 1fr
+    max-width: 1300px
+    margin: 0 auto
+    height: 100% 
+
+    nav
+        display: grid
+        grid-template-columns: 1fr 5fr
+        
+        .nav-header
+            display: flex
+            align-items: center
+            color: rgba(240,240,240,0.7)
+          
+        .nav-menu
+
+            display: flex
+            align-items: center
+            justify-content: flex-end
+
+            svg
+                color: rgba(255,255,255,0.8)
+                font-size: 1.5em
+                margin-right: 1em
+
+            .user-profile
+                font-size: 0.8em
+                color: rgba(255,255,255,0.8)
+                
+                span
+                    color: white
+
+                p
+                    display: inline-block
+                    margin-right: 1em
+                
+                img
+                    vertical-align: middle
+                    border-radius: 50%
+
+    .body
+        background-color: white
+        border-radius: 0.5em
+        display: grid
+        grid-template-rows: 1fr 9fr
+        min-height: 0
+        min-width: 0
+        border: 1px solid rgba(0,0,0,0.5)
+        .dash-header
+            display: grid
+            grid-template-columns: 1fr 1fr
+            padding: 1em
+            align-items: center
+            border-bottom: 1px solid rgba(240,240,240,1)
+            ul
+                margin-left: 1em
+                li
+                    display: inline-block
+                    margin-right: 1em
+                    text-align: center
+                    a
+                        font-size: 0.85em
+                        text-decoration: none
+                        text-transform: uppercase
+                        color: rgba(80, 80, 80, 1)
+
+                    & .active
+                        color: var(--color-blue)
+
+            .search
+                margin-right: 1em
+                justify-self: end
+                border: 1px solid rgba(80,80,80,0.2)
+                border-radius: 2em
+                padding: 0.5em
+
+                svg
+                    margin-left: 0.5em
+                    color: rgba(80,80,80,1)
+
+                input
+                    border: initial
+                    outline: none
+                    appearance: none
+                    margin-left: 0.5em
+                    font-size: 0.8em
+           
+        .dash-body
+            background-color: rgba(245, 245, 245, 1)
+            padding: 2em
+            overflow-y: scroll
+            border: 1px solid white
+            
+            
+            .content
+
+                .content-header
+                    display: grid
+                    grid-template-columns: 1fr 1fr
+                .content-header h1
+                    font-size: 1.5em
+                    color: var(--color-blue)
+                .content-header .contacticons
+                    justify-self: end
+                    color: var(--color-blue)
+                    font-size: 1.2em
+
+                    & svg
+                        margin-left: 0.3em
+                section
+                    margin-top: 1.5em
+
+
+                .revenueSection
+                    display: grid
+                    grid-template-columns: 8fr 2fr
+                    grid-column-gap: 1em
+                    grid-template-rows: minmax(100px auto)
+
+                    .revenueChartCard
+                        border-top: 2px solid var(--color-blue)
+                        background-color: rgba(238,238,238,1)
+                        border-left: 1px solid rgba(230,230,230,1)
+                        border-right: 1px solid rgba(230,230,230,1)
+                        border-bottom: 1px solid rgba(230,230,230,1)
+
+                        .card-header 
+                            margin-bottom: 0.5em
+                            background-color: rgba(241,241,241,1)
+                            padding: 1em
+                            border-bottom: 1px solid rgba(230,230,230,1)
+
+                        .card-body
+                            padding: 0.5em 1.5em 0.5em 0.5em
+
+                        h5
+                            font-weight: normal
+                            color: rgba(80,80,80,1)
+
+                    .revenueSummary
+                        display: flex
+                        flex-direction: column
+                        text-align: center
+                        justify-content: space-evenly
+                        color: rgba(80,80,80,1)
+                        text-transform: uppercase
+                        font-size: 0.8em
+                        letter-spacing: -0.5px
+
+                        .summarySection
+                            margin-bottom: 0.5em
+
+                .orderSection
+
+                    border-top: 2px solid var(--color-yellow)
+
+                    .orderSummaryContainer
+                        display: grid
+                        grid-template-columns: 1fr
+                    table
+                        width: 100%
+                        text-align: left
+                        border-collapse: collapse
+                        border: 1px solid rgba(0,0,0,0.05)
+
+                        th:first-child
+                            padding: 1rem 0.5rem
+                        th:last-child
+                            padding: 1rem 0.5rem
+                        
+                        th
+                            font-weight: normal
+                            color: rgba(80,80,80,1)
+                            border: initial
+                            border-bottom: 1px solid rgba(0,0,0,0.2)
+                            background-color: rgba(250,250,250,1)    
+                            
+
+                        td
+                            font-size: 0.8em
+                            color: rgba(100,100,100,1)
+                            padding: 1rem 0.5rem
+                  
+                            border-bottom: 1px solid rgba(0,0,0,0.05)
+                
+                .mapSection
+                    #map, #mapstamen
+                        height: 400px
+                    
+                    .leaflet-control-attribution
+                        display: none
+
+                    .card
+                        background-color: white
+                        border-radius: 0.5em
+                        box-shadow: 0 1px 15px 1px rgba(69,65,78,.08)
+
+                    .card-header
+                        background-color: var(--color-lightblue)
+                        border-top-left-radius: 0.5em
+                        border-top-right-radius: 0.5em
+                        & h5
+                            color: rgba(240,240,240,1)
+                            font-size: 0.8em
+                            padding: 1em
+                            font-weight: normal
+
+                    .card-body
+                        padding: 0.1em
+
+
+
+
+    footer
+        
+        
+  

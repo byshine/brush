@@ -10,12 +10,15 @@ const nodemon = require('gulp-nodemon');
 const plumber = require('gulp-plumber');
 const sass = require('gulp-sass');
 const pug = require('gulp-pug');
+const gm = require('gulp-gm');
+const imagemin = require('gulp-imagemin');
 
 const paths = {
     scripts: ["src/js/*.js"],
     styles: ["src/css/*.css", "src/css/*.scss", "src/css/*.sass"],
     html: ["src/*.html"],
-    views: ["src/*.pug"]
+    views: ["src/*.pug"],
+    images: ["src/images/*.png", "src/images/*.jpeg", "src/images/*.jpg", "src/images/*.gif"]
 }
 
 gulp.task('html', () => {
@@ -62,6 +65,14 @@ gulp.task('styles', () => {
         .pipe(gulp.dest('dist/css'));
 });
 
+gulp.task('images', function () {
+    return gulp.src(paths.images)
+        .pipe(plumber())
+        .pipe(imagemin())
+        .pipe(gulp.dest('dist/images'));
+});
+
+
 gulp.task('watch', function() {
 
         gulp.watch(paths.scripts, ['scripts']);
@@ -76,5 +87,5 @@ gulp.task('watch', function() {
 
 });
 
-gulp.task('default', ['scripts', 'styles', 'html', 'views']);
+gulp.task('default', ['scripts', 'styles', 'html', 'views', 'images']);
 gulp.task('develop', ['watch']);
